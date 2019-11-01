@@ -1,16 +1,16 @@
 <?php 
 
+    include_once('config/conexao.php';)
+
     $nomeAluno = $_POST['nomeAluno'];
         // nomeAluno eh igual ao campo name do formulario do index, criado primeiro
     $raAluno = $_POST['raAluno'];
     $cursoId = $_POST['curso'];
 
-    $host = 'mysql:host=localhost;dbname=escola;port=3306';
-    $user = 'root';
-    $pass = ''; 
-    $db = new PDO($host, $user, $pass);
-        // agora funcao para inserir dados no BD pelo PHP. naopode ser uma query por questoes de seguranca, porque poderia aceitar outras coisas além do que foi solicitado para inserir no banco de dados
-    
+    // funcao para conectar este arquivo com o arquivo conexao.php para conectar com o BD SQL
+    $db = conectarBanco();
+
+    // agora funcao para inserir dados no BD pelo PHP. naopode ser uma query por questoes de seguranca, porque poderia aceitar outras coisas além do que foi solicitado para inserir no banco de dados
     $query = $db->prepare('INSERT INTO alunos (nome, ra, curso_id) 
     values (:nome,:ra,:curso_id)');
         // prepare para preparar os dados para inserir no BD
