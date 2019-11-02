@@ -26,7 +26,7 @@ $cursos = $query->fetchAll(PDO::FETCH_ASSOC);
 <body>
 
     <br><br>
-    <form action="cadastroAluno.php" method='post'>
+    <form action="cadastroAluno.php" method='post' accept-charset="utf-8">
         <h2>Nome do aluno</h2><br>
         <input type="text" name="nomeAluno">
         <br><br>
