@@ -1,9 +1,7 @@
 <?php
 
-$host = 'mysql:host=localhost;dbname=escola;port=3306';
-$user = 'root';
-$pass = "";
-$db = new PDO($host, $user, $pass);
+include_once("config/conexao.php");
+$db=conectarBanco();
 $query = $db->query('SELECT * FROM alunos');
 $alunos = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -25,6 +23,9 @@ $alunos = $query->fetchAll(PDO::FETCH_ASSOC);
         <li><?=$aluno['nome'] ?></li>
 <?php endforeach; ?>
     </ul>
+    <div class="container d-flex justify-content-start mt-5">
+            <a href="index.php">Voltar</a>
+        </div>
 
 </body>
 </html>

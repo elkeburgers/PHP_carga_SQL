@@ -1,6 +1,6 @@
 <?php 
 
-    include_once('config/conexao.php';)
+    include_once('config/conexao.php');
 
     $nomeAluno = $_POST['nomeAluno'];
         // nomeAluno eh igual ao campo name do formulario do index, criado primeiro
@@ -26,7 +26,18 @@
     $resultado = $query->execute(["nome"=>$nomeAluno, "ra"=>$raAluno, "curso_id"=>$cursoId]);
     // obedecendo a associacao que criamos dentro do array no prepare, retorna true ou false, conforme o sucesso do envio para o BD
 
-    var_dump($resultado);
+    $db=conectarBanco();
+    // var_dump($resultado);
 
+    if($resultado){
+        echo "Aluno cadastrado com sucesso";
+    }else{
+        echo "Erro no cadastrado."."<br>";
+    }
 ?>
+
+<br><br>
+<a href="alunos.php">Ver alunos cadastrados.</a>
+
+
 

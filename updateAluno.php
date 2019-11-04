@@ -10,10 +10,12 @@
 
     // funcao para garantir que a pagina vai receber a informacao para fazer a consulta, informar qual o erro  caso não passe na validacao, e parar a execucao do codigo aso nao valide, para nao aparecer erro para o usuario.
     // lembrando, if(isset) pergunta se aquele parametro jah existe. Usando o OU (||) para garantir que vai receber a informacao de qualquer forma de envio, seja get ou post.
-    if(isset($_GET['id']) || isset($_POST['id'])){
+    
+    // if(isset($_GET['id']) || isset($_POST['id'])){ - utilizando a validacao de incluir o metodo POST para receber os dados, o sistema retorna um erro.
+    if(isset($_GET['id'])){
         $id = $_GET['id'];
-    }else if(isset($_POST['id'])){
-        $id = $_POST['id'];
+    // }else if(isset($_POST['id'])){
+    //     $id = $_POST['id'];
     }else{
         echo "Você deve informar um ID.";
         exit;
@@ -66,6 +68,10 @@
 
 <body>
     <main class="col-5 ml-5 pl-5 bg-light mt-3 pb-5">
+    <div>
+    <br><br>
+    <h2>Cadastro de aluno - Edição</h2>
+    </div>
         <br><br>
         <!-- preciso incluir o id no action para ele manter essa informacao quando atualiza a pagina (forma 1) menos comum de usar -->
         <!-- <form action="updateAluno.php?<?php  ?>"  method='post'> -->
@@ -80,7 +86,7 @@
 
             <h2>RA do aluno</h2><br>
             <!-- para retornar o nome correspondente ao id e ser apenas visivel: disabled - fica cinza, readonly - fica normal, mas tambem nao editavel -->
-            <input type="text" name="raAluno" value='<?php echo $aluno['ra'];?>' readonly>
+            <input type="text" name="raAluno" value='<?php echo $aluno['ra'];?>' readonly/>
             <br><br>
 
             <h2>Cursos disponíveis</h2><br>
